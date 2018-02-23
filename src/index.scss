@@ -2,4 +2,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  .chartContainer{
+    background-color: grey;
+  }
+  .react-stockcharts-tooltip {
+       fill: #FFFFFF;
+     }
+     .react-stockcharts-tooltip-label {
+       fill: #CCCCCC;
+     }
 }

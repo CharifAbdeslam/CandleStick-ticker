@@ -1,24 +1,28 @@
 import React, { Component } from 'react';
 import Chart from './chart';
-import { getData } from "./utils"
+import { getData} from "./utils"
 class App extends Component {
-
-
-    componentDidMount() {
-		getData().then(data => {
-			this.setState({data},()=>{
-				console.log(this.state.data)
-			})
-		})
+tickers(){
+  getData().then(data => {
+      this.setState({data},()=>{
+      console.log(this.state.data)
+    })
+  })
+}
+componentDidMount() {
+    this.tickers()
+   setInterval(()=>{
+     this.tickers()
+   },55000)
 	}
 	render() {
 		if (this.state == null) {
 			return <div>Loading...</div>
 		}
 		return (
-
-	 <Chart  data={this.state.data} />
-
+<div className="container chartContainer">
+  <Chart  data={this.state.data} />
+</div>
 		)
 	}
 
