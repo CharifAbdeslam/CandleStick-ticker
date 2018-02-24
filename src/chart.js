@@ -56,7 +56,7 @@ class CandleStickChartWithZoomPan extends React.Component {
 		const end = xAccessor(data[Math.max(0, data.length - 150)]);
 		const xExtents = [start, end];
 		const margin = { left: 70, right: 70, top: 20, bottom: 30 };
-		const height = 400;
+		const height = 300;
 		const gridHeight = height - margin.top - margin.bottom;
 		const gridWidth = width - margin.left - margin.right;
 		const showGrid = true;
