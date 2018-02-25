@@ -13,7 +13,7 @@ componentDidMount() {
     this.tickers()
    setInterval(()=>{
      this.tickers()
-   },10000)
+   },100000000000000000000)
 	}
 	render() {
 		if (this.state == null) {
