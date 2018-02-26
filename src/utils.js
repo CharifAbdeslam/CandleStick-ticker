@@ -16,7 +16,7 @@ function convertData(data) {
 }
 
 export function getData() {
-	const promiseData = fetch("https://api.bitfinex.com/v2/candles/trade:1m:tBTCUSD/hist")
+	const promiseData = fetch("https://api.bitfinex.com/v2/candles/trade:1m:tETHBTC/hist")
 		.then(response => response.json())
 		.then(data => {
 			var crvDate = convertData(data)

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { format } from "d3-format";
+import { timeFormat } from "d3-time-format";
 import { ChartCanvas, Chart } from "react-stockcharts";
 import {
 	BarSeries,
@@ -13,7 +14,8 @@ import {
 	CrossHairCursor,
 	EdgeIndicator,
 	CurrentCoordinate,
-	MouseCoordinateY
+	MouseCoordinateY,
+	MouseCoordinateX
 } from "react-stockcharts/lib/coordinates";
 import { discontinuousTimeScaleProvider } from "react-stockcharts/lib/scale";
 import {
@@ -100,7 +102,7 @@ class CandleStickChartWithEquidistantChannel extends React.Component {
 				height={500}
 				width={width}
 				ratio={ratio}
-				margin={{ left: 40, right: 70, top: 20, bottom: 30 }}
+				margin={{ left: 40, right: 90, top: 20, bottom: 30 }}
 				seriesName="MSFT"
 				data={data}
 				xScale={xScale}
@@ -117,7 +119,11 @@ class CandleStickChartWithEquidistantChannel extends React.Component {
 					<MouseCoordinateY
 						at="right"
 						orient="right"
-						displayFormat={format(".2f")} />
+						displayFormat={format(".7f")} />
+						<MouseCoordinateX
+							at="bottom"
+							orient="bottom"
+							displayFormat={timeFormat("%H:%M:%S")} />
 
 					<CandlestickSeries opacity={1} stroke={d => d.close > d.open
 						? "#09f419"
@@ -132,7 +138,7 @@ class CandleStickChartWithEquidistantChannel extends React.Component {
 					<CurrentCoordinate yAccessor={ema26.accessor()} fill={ema26.stroke()} />
 					<CurrentCoordinate yAccessor={ema12.accessor()} fill={ema12.stroke()} />
 
-					<EdgeIndicator itemType="last" orient="right" edgeAt="right"
+					<EdgeIndicator itemType="last" orient="right" edgeAt="right" displayFormat={format(".7f")}
 						yAccessor={d => d.close} fill={d => d.close > d.open ? "#6BA583" : "#FB0303"}/>
 
 					<OHLCTooltip origin={[-40, 0]}/>
@@ -161,10 +167,7 @@ class CandleStickChartWithEquidistantChannel extends React.Component {
 					yExtents={[d => d.volume]}
 					origin={(w, h) => [0, h - 300]}
 				>
-					<MouseCoordinateY
-						at="left"
-						orient="left"
-						displayFormat={format(".4s")} />
+
 					<BarSeries yAccessor={d => d.volume} fill={d => d.close > d.open ? "rgba(137, 200, 255,0.3)" : "rgba(137, 200, 255,0.3)"} />
 				</Chart>
 				<Chart id={3} height={90}
