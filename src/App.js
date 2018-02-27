@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import Chart from './chart';
 import { getData} from "./utils"
 class App extends Component {
+  constuctor(){
+
+      this.State={
+        rmi:[]
+      }
+
+  }
 tickers(){
   getData().then(data => {
       this.setState({data},()=>{

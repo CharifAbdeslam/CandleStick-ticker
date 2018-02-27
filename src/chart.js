@@ -99,7 +99,7 @@ class CandleStickChartWithEquidistantChannel extends React.Component {
 			: {};
 		return (
 			<ChartCanvas
-				height={500}
+				height={600}
 				width={width}
 				ratio={ratio}
 				margin={{ left: 40, right: 90, top: 20, bottom: 30 }}
@@ -110,7 +110,7 @@ class CandleStickChartWithEquidistantChannel extends React.Component {
 				displayXAccessor={displayXAccessor}
 				xExtents={xExtents}
 			>
-				<Chart id={1} height={300}
+				<Chart id={1} height={400}
 					yExtents={[d => [d.high, d.low], ema26.accessor(), ema12.accessor()]}
 					padding={{ top: 10, bottom: 20 }}
 				>
@@ -144,7 +144,7 @@ class CandleStickChartWithEquidistantChannel extends React.Component {
 					<OHLCTooltip origin={[-40, 0]}/>
 
 					<MovingAverageTooltip
-						onClick={e => console.log(e)}
+						displayFormat={format(".7f")}
 						origin={[-38, 15]}
 						options={[
 							{
@@ -170,9 +170,9 @@ class CandleStickChartWithEquidistantChannel extends React.Component {
 
 					<BarSeries yAccessor={d => d.volume} fill={d => d.close > d.open ? "rgba(137, 200, 255,0.3)" : "rgba(137, 200, 255,0.3)"} />
 				</Chart>
-				<Chart id={3} height={90}
+				<Chart id={3} height={100}
 					yExtents={macdCalculator.accessor()}
-					origin={(w, h) => [0, h - 150]} padding={{ top: 10, bottom: 10 }}
+					origin={(w, h) => [0, h - 150]} padding={{ top: 40, bottom: 5 }}
 				>
 					<XAxis axisAt="bottom" orient="bottom" stroke="#CCCCCC" tickStroke="#CCCCCC"/>
 					<YAxis axisAt="right" orient="right" stroke="#CCCCCC" tickStroke="#CCCCCC" showTicks={false} ticks={0}/>
